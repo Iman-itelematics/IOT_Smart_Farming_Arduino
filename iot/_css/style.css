@@ -1,0 +1,30 @@
+#hum,
+#tem,
+#soil,
+#presser,
+#soilmoisture {
+    background-color: lightblue;
+    font-size: 50px;
+    color: black;
+    text-align: center;
+    border-radius: 8px;
+    border-style: solid;
+    border-color: blue;
+    margin: 5px;
+}
+
+#part {
+    /*background-color: aliceblue;*/
+}
+
+#chart,
+#humidity,
+#pressure,
+#soiltempreture {
+    min-width: 100px;
+    height: 400px;
+    margin: 10px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 8px;
+}
