@@ -49,6 +49,8 @@ else if ($waterpump == "off") {
                 <a class="navbar-brand" href="http://localhost/iot/index.html">Current Data</a>
                 <a class="navbar-brand" href="http://localhost/iot/Chart.html">Charts</a>
                 <a class="navbar-brand" href="http://localhost/iot/Water.php">Waterpump Control</a>
+                <a class="navbar-brand" href="http://localhost/iot/datasubmit.html">Data Submit</a>
+                <a class="navbar-brand" href="http://localhost/iot/forcast.html">News&Forcast</a>
                 <!--<a class="navbar-brand" href="index.html" class="navbar-brand">
                     <b>IOT Smart Farming</b>
                 </a>-->
