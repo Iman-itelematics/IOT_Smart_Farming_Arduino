@@ -23,14 +23,14 @@ String data;
 const char* ssid     = "Network Not Found";
 const char* password = "testtest";
 
-const char* host = "192.168.8.101";
+const char* host = "192.168.8.102";
 
-//String path          = "http://localhost/iot/waterpump.json";  
-//const int pin        = D5;
+String path          = "http://localhost/iot/waterpump.json";  
+const int pin        = D5;
 
 void setup() {
-//  pinMode(pin, OUTPUT); 
-//  pinMode(pin, HIGH);
+  pinMode(pin, OUTPUT); 
+  pinMode(pin, HIGH);
   Serial.begin(115200);
   delay(10);
   data = "";
@@ -94,9 +94,9 @@ void loop() {
     return;
     
   }
-//      client.print(String("GET ") + path + " HTTP/1.1\r\n" +
-//               "Host: " + host + "\r\n" + 
-//               "Connection: keep-alive\r\n\r\n");
+      client.print(String("GET ") + path + " HTTP/1.1\r\n" +
+               "Host: " + host + "\r\n" + 
+               "Connection: keep-alive\r\n\r\n");
 
     data = String("temp1=") + TempC + String("&hum1=") + Vocht + String("&tempr1=")+Temp +String("&press1=")+ Press+String("&press01=")+Press0+String("&soil1=")+Soil +String("&soilTemp1=")+SoilTemp;
 //    data = String("temp1=") + 55 + String("&hum1=") + 66 + String("&tempr1=")+77 +String("&press1=")+ 88+String("&press01=")+99+String("&soil1=")+11 +String("&soilTemp1=")+55;
@@ -111,45 +111,45 @@ void loop() {
     
     
 
-//  delay(500); // wait for server to respond
-//String section="header";
-//  while(client.available()){
-//    String line = client.readStringUntil('\r');
-//    // Serial.print(line);
-//    // we’ll parse the HTML body here
-//    if (section=="header") { // headers..
-//      Serial.print(".");
-//      if (line=="\n") { // skips the empty space at the beginning 
-//        section="json";
-//      }
-//    }
-//    else if (section=="json") {  // print the good stuff
-//      section="ignore";
-//      String result = line.substring(1);
-//
-//      // Parse JSON
-//      int size = result.length() + 1;
-//      char json[size];
-//      result.toCharArray(json, size);
-//      StaticJsonBuffer<200> jsonBuffer;
-//      JsonObject& json_parsed = jsonBuffer.parseObject(json);
-//      if (!json_parsed.success())
-//      {
-//        Serial.println("parseObject() failed");
-//        return;
-//      }
-//
-//      // Make the decision to turn off or on the LED
-//      if (strcmp(json_parsed["waterpump"], "on") == 0) {
-//        digitalWrite(pin, HIGH); 
-//        Serial.println("waterpump ON");
-//      }
-//      else {
-//        digitalWrite(pin, LOW);
-//        Serial.println("waterpump off");
-//      }
-//    }
-//  }
+  delay(500); // wait for server to respond
+String section="header";
+  while(client.available()){
+    String line = client.readStringUntil('\r');
+    // Serial.print(line);
+    // we’ll parse the HTML body here
+    if (section=="header") { // headers..
+      Serial.print(".");
+      if (line=="\n") { // skips the empty space at the beginning 
+        section="json";
+      }
+    }
+    else if (section=="json") {  // print the good stuff
+      section="ignore";
+      String result = line.substring(1);
+
+      // Parse JSON
+      int size = result.length() + 1;
+      char json[size];
+      result.toCharArray(json, size);
+      StaticJsonBuffer<200> jsonBuffer;
+      JsonObject& json_parsed = jsonBuffer.parseObject(json);
+      if (!json_parsed.success())
+      {
+        Serial.println("parseObject() failed");
+        return;
+      }
+
+      // Make the decision to turn off or on the LED
+      if (strcmp(json_parsed["waterpump"], "on") == 0) {
+        digitalWrite(pin, HIGH); 
+        Serial.println("waterpump ON");
+      }
+      else {
+        digitalWrite(pin, LOW);
+        Serial.println("waterpump off");
+      }
+    }
+  }
 //  int reading=15;
 //  Serial.println(reading);
 //  

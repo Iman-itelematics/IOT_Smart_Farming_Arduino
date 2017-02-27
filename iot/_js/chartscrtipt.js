@@ -99,7 +99,7 @@ $(function() {
                 sety(varlocaly);
             }
         });
-    }, 1000);
+    }, 100);
 
     function getx() {
         return ultimox;
