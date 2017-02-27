@@ -111,59 +111,38 @@
                         <script type="text/javascript">
                             setInterval(function() {
                                 var JSON = $.ajax({
-                                    url: "data.php?q=3",
+                                    url: "data.php?q=14",
                                     dataType: 'json',
                                     async: false
                                 }).responseText;
                                 var Respuesta = jQuery.parseJSON(JSON);
 
+                                for (var i = 0; i < Respuesta.length; i++) {
+                                    var _data = Respuesta[i].date1;
+                                    var _max = Respuesta[i].max1;
+                                    var _min = Respuesta[i].min1;
+                                    var _avg = parseFloat(parseFloat(_max) + parseFloat(_min)) / 2;
+                                    var _gdd = parseFloat(_avg) - 10;
+                                    if (_gdd < 0) {
+                                        _gdd = 0;
+                                    }
 
-                                var hum = Respuesta[0].humidity;
-                                var tem = Respuesta[0].temperature;
-                                var soil = Respuesta[0].soiltemperature;
+                                    var urlString = "d=" + _data + "&mx=" + _max + "&mn=" + _min + "&avg=" + _avg + "&gdd=" + _gdd;
 
-                                var presser = Respuesta[0].presser;
-                                var soilmoisture = Respuesta[0].soilmoisture;
-                                var soilstatus;
-                                if (soilmoisture > 450) {
-                                    soilstatus = "Soil is Wet";
-                                    document.getElementById("soilmoisture").style.backgroundColor = "green";
-                                    document.getElementById("soilmoisture").style.color = "white";
-
-
-                                } else {
-
-                                    soilstatus = "Soil is Dry";
-                                    document.getElementById("soilmoisture").style.backgroundColor = "red";
-                                    document.getElementById("soilmoisture").style.color = "white";
-
-                                    // confirm("Please On Waterpump!");
-                                    // var x, y;
-                                    // if (y == true) {
-                                    //     x = "You pressed OK!";
-                                    // } else {
-                                    //     x = "You pressed Cancel!";
-                                    // }
+                                    $.ajax({
+                                        url: "exportData.php",
+                                        type: "POST",
+                                        cache: false,
+                                        data: urlString,
+                                        success: function(response) {
+                                            // alert(response);
+                                        }
+                                    });
                                 }
-
-
-                                document.getElementById("hum").innerHTML = "<p>Humidity : " + hum + "%</p>";
-                                document.getElementById("tem").innerHTML = "<p>Temperature : " + tem + " `C</p>";
-                                document.getElementById("soil").innerHTML = "<p>Soil Temperature : " + soil + " `C</p>";
-                                document.getElementById("presser").innerHTML = "<p>Pressure : " + (presser / 10) + " kPa</p>";
-                                document.getElementById("soilmoisture").innerHTML = "<p>" + soilstatus + "</p>";
-
                             }, 100);
                         </script>
                         <!--meter-->
-                        <div id="hum"></div>
-                        <div id="tem"></div>
-                        <div id="soil"></div>
-                        <div id="presser"></div>
-                        <div id="soilmoisture"></div>
 
-                        <div id="meters"></div>
-                        <div id="meters2"></div>
 
                     </div>
                 </div>

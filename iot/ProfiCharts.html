@@ -14,9 +14,8 @@
     <link rel="stylesheet" type="text/css" href="_asset/css/plugins/simple-line-icons.css" />
     <link rel="stylesheet" type="text/css" href="_asset/css/plugins/animate.min.css" />
     <link rel="stylesheet" type="text/css" href="_asset/css/plugins/fullcalendar.min.css" />
-
     <link href="_asset/css/style.css" rel="stylesheet">
-    <link type="text/css" href="_css/style.css" rel="stylesheet">
+    <link href="_css/style.css" rel="stylesheet">
 
     <link rel="shortcut icon" href="_asset/img/logomi.png">
 
@@ -63,7 +62,7 @@
     </nav>
     <!-- end: Header -->
 
-    <div class="container-fluid mimin-wrapper">
+    <div class="container-fluid mimin-wrapper" style="background-image: _asset/img/bg1.jpg">
 
         <!-- start:Left Menu -->
         <div id="left-menu">
@@ -106,64 +105,13 @@
 
         <div class="col-md-12" style="padding:20px;">
             <div class="col-md-12 padding-0">
-                <div class="col-md-8 padding-0" id="part">
+                <div class="col-md-8 padding-0">
                     <div class="col-md-12">
-                        <script type="text/javascript">
-                            setInterval(function() {
-                                var JSON = $.ajax({
-                                    url: "data.php?q=3",
-                                    dataType: 'json',
-                                    async: false
-                                }).responseText;
-                                var Respuesta = jQuery.parseJSON(JSON);
+                        <!--chart-->
+                        <div id="chart"></div>
+                        <div id="chart2"></div>
 
 
-                                var hum = Respuesta[0].humidity;
-                                var tem = Respuesta[0].temperature;
-                                var soil = Respuesta[0].soiltemperature;
-
-                                var presser = Respuesta[0].presser;
-                                var soilmoisture = Respuesta[0].soilmoisture;
-                                var soilstatus;
-                                if (soilmoisture > 450) {
-                                    soilstatus = "Soil is Wet";
-                                    document.getElementById("soilmoisture").style.backgroundColor = "green";
-                                    document.getElementById("soilmoisture").style.color = "white";
-
-
-                                } else {
-
-                                    soilstatus = "Soil is Dry";
-                                    document.getElementById("soilmoisture").style.backgroundColor = "red";
-                                    document.getElementById("soilmoisture").style.color = "white";
-
-                                    // confirm("Please On Waterpump!");
-                                    // var x, y;
-                                    // if (y == true) {
-                                    //     x = "You pressed OK!";
-                                    // } else {
-                                    //     x = "You pressed Cancel!";
-                                    // }
-                                }
-
-
-                                document.getElementById("hum").innerHTML = "<p>Humidity : " + hum + "%</p>";
-                                document.getElementById("tem").innerHTML = "<p>Temperature : " + tem + " `C</p>";
-                                document.getElementById("soil").innerHTML = "<p>Soil Temperature : " + soil + " `C</p>";
-                                document.getElementById("presser").innerHTML = "<p>Pressure : " + (presser / 10) + " kPa</p>";
-                                document.getElementById("soilmoisture").innerHTML = "<p>" + soilstatus + "</p>";
-
-                            }, 100);
-                        </script>
-                        <!--meter-->
-                        <div id="hum"></div>
-                        <div id="tem"></div>
-                        <div id="soil"></div>
-                        <div id="presser"></div>
-                        <div id="soilmoisture"></div>
-
-                        <div id="meters"></div>
-                        <div id="meters2"></div>
 
                     </div>
                 </div>
@@ -200,7 +148,9 @@
     <script type="text/javascript" src="_js/highcharts.js"></script>
     <script type="text/javascript" src="_js/exporting.js"></script>
     <script type="text/javascript" src="_js/script.js"></script>
-    <script type="text/javascript" src="_js/chartscrtipt.js"></script>
+    <script type="text/javascript" src="_js/profitchart.js"></script>
+    <script type="text/javascript" src="_js/profitchart2.js"></script>
+
 
     <!-- plugins -->
     <script src="_asset/js/plugins/moment.min.js"></script>
