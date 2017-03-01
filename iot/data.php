@@ -101,6 +101,13 @@
             $json=json_encode($results);
             echo $json;
         break;
+        case 15:
+            $statement=$pdo->prepare("SELECT * FROM `maxmin`");
+            $statement->execute();
+            $results=$statement->fetchAll(PDO::FETCH_ASSOC);
+            $json=json_encode($results);
+            echo $json;
+        break;
         
         default: 
          

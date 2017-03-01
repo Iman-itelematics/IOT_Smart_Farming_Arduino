@@ -103,7 +103,7 @@ else if ($waterpump == "off") {
                             <li><a onclick="window.location.href='http://localhost/iot/Water.php'">Waterpump Control</a></li>
                             <li><a onclick="window.location.href='http://localhost/iot/datasubmit.html'">Data Submit</a></li>
                             <li><a onclick="window.location.href='http://localhost/iot/forcast.html'">News & Forcast</a></li>
-                            <li><a onclick="window.location.href='http://localhost/iot/Analysis.html'">Analisys</a></li>
+                            <li><a onclick="window.location.href='http://localhost/iot/Analysis.php'">Analisys</a></li>
 
                         </ul>
                     </li>

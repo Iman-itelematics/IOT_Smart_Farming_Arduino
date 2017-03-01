@@ -99,7 +99,7 @@
                                 <li><a onclick="window.location.href='http://localhost/iot/Water.php'">Waterpump Control</a></li>
                                 <li><a onclick="window.location.href='http://localhost/iot/datasubmit.html'">Data Submit</a></li>
                                 <li><a onclick="window.location.href='http://localhost/iot/forcast.html'">News & Forcast</a></li>
-                                <li><a onclick="window.location.href='http://localhost/iot/Analysis.html'">Analisys</a></li>
+                                <li><a onclick="window.location.href='http://localhost/iot/Analysis.php'">Analisys</a></li>
 
                             </ul>
                         </li>
@@ -202,7 +202,31 @@
 
                                 <div class="row">
                                     <div class="col-md-12" id="div1">
+                                        <h1>Growing Degree Days Detals</h1>
+<div id="links">
+   <table  border="1" cellspacing="1" cellpadding="1">
+		<tr>
+			<td>&nbsp;Date&nbsp;</td>
+			<td>&nbsp;MAX &nbsp;</td>
+			<td>&nbsp;MIN &nbsp;</td>
+			<td>&nbsp;AVG &nbsp;</td>
+			<td>&nbsp;GDD &nbsp;</td>
+		</tr>
 
+      <?php 
+		  if($result!==FALSE){
+		     while($row = mysql_fetch_array($result)) {
+				 
+		        printf("<tr><td> &nbsp;%s </td><td> &nbsp;%s&nbsp; </td><td> &nbsp;%s&nbsp; </td><td> &nbsp;%s </td><td> &nbsp;%s </td></tr>", 
+		           $row["date1"], $row["max1"], $row["min1"], $row["avg"], $row["gdd"]);
+		     }
+			 //printf('<p>%s </p>',$row["temperature"]);
+		     mysql_free_result($result);
+		     mysql_close();
+		  }
+      ?>
+
+   </table></div>
                                     </div>
                                 </div>
 

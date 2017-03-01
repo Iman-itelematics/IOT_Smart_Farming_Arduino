@@ -23,7 +23,7 @@ String data;
 const char* ssid     = "Network Not Found";
 const char* password = "testtest";
 
-const char* host = "192.168.8.100";
+const char* host = "192.168.8.102";
 
 void setup() {
   Serial.begin(115200);
